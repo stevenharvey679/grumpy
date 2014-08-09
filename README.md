@@ -17,8 +17,7 @@ What still has to be done
 =========================
 
 * Put this in an npm module
-* More CLI options to do various things
-* Response helpers
+* You should send me suggestions..
 
 What will not be done
 =====================
