@@ -2,18 +2,17 @@
 # Starts a server that emits an event on each request.
 
 http = require 'http'
-EventEmitter = require('eventemitter2').EventEmitter2;
-eventEmitter = new EventEmitter {
-  wildcard: true,
-  delimiter: '/',
-  maxListeners: 0
-}
+events = require('events')
+eventEmitter = new events.EventEmitter()
+urlUtils = require 'url'
 serverHandler = (req, res)->
-									url = req.url[1..req.url.length]
+									parsedUrl = urlUtils.parse(req.url, true)
+									query = parsedUrl.query
+									url = parsedUrl.pathname[1..req.url.length]
 									if eventEmitter.listeners(url).length > 0
-      							eventEmitter.emit(url, req, res)
+      							eventEmitter.emit(url, query, res, req)
 									else
-										eventEmitter.emit('404', req, res)
+										eventEmitter.emit('404', query, res, req)
 
 class Server 
   @startServer: (ip='0.0.0.0', port='1337')->
