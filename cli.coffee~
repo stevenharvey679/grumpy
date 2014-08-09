@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+# Cli utilities
+commander = require 'commander'
