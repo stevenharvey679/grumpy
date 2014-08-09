@@ -8,11 +8,16 @@ eventEmitter = new EventEmitter {
   delimiter: '/',
   maxListeners: 0
 }
+serverHandler = (req, res)->
+									url = req.url[1..req.url.length]
+									if eventEmitter.listeners(url).length > 0
+      							eventEmitter.emit(url, req, res)
+									else
+										eventEmitter.emit('404', req, res)
+
 class Server 
   @startServer: (ip='0.0.0.0', port='1337')->
-    http.createServer (req, res) ->
-      eventEmitter.emit(req.url[1..req.url.length], req, res)
-    .listen(port, ip)
+    http.createServer(serverHandler).listen(port, ip)
     console.log "Server running at http://#{ip}:#{port}/"
     return eventEmitter
 
