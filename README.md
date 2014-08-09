@@ -16,9 +16,9 @@ A very basic example of how to describe an action. We use EventEmitter2 so feel 
 What still has to be done
 =========================
 
-* Put this in an npm module and create generators
-* A more sophisticated parameters system
+* Put this in an npm module
 * More CLI options to do various things
+* Response helpers
 
 What will not be done
 =====================
