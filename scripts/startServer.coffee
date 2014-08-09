@@ -1,7 +1,8 @@
 # Command tool to start server
-path = require 'path'
 argv = require('yargs').argv
 if argv.m?
+	path = require 'path'
+	require '../libs/response'
 	global.server = require('../libs/server').startServer(argv.i, argv.p)
 	require path.join(process.cwd(), argv.m)
 else
