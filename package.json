@@ -4,8 +4,9 @@
   "description": "A demonstration of how the server might be used",
   "main": "./scripts/startServer.coffee",
   "dependencies": {
-      "coffee-script":"",
-      "yargs":""
+    "coffee-script": "",
+    "eventemitter2": "^0.4.14",
+    "yargs": ""
   },
   "directories": {
     "example": "example"
